@@ -788,7 +788,7 @@
     <section id="contact">
         <div class="contact-container">
             <h2>GET IN TOUCH</h2>
-            <form id="contactForm">
+            <form id="contactForm" name="contact" method="POST" data-netlify="true">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" name="name" required>
@@ -907,25 +907,6 @@
                 triggerDownload('aplikasi gudang installer.exe');
             }
         }
-
-        // Form Submission dengan EmailJS
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-
-            // Menggunakan mailto sebagai alternatif
-            const mailtoLink = `mailto:husainalmubarak25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Dari: ${name}\nEmail: ${email}\n\nPesan:\n${message}`)}`;
-
-            window.location.href = mailtoLink;
-
-            alert('Email client Anda akan terbuka. Silakan kirim email dari aplikasi email Anda.');
-            this.reset();
-        });
 
         // Parallax Effect on Scroll
         window.addEventListener('scroll', () => {

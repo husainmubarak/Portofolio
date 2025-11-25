@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesan Terkirim - Husain Portfolio</title>
     <style>
-        /* Variabel Warna dari index.html */
+        /* Variabel CSS yang Sama dari Jawaban Sebelumnya */
         :root {
             --primary: #FF6B6B;
             --secondary: #4ECDC4;
@@ -43,7 +43,7 @@
             box-shadow: 10px 10px 0 var(--secondary);
         }
         
-        #success-title { /* Tambahkan ID untuk JavaScript */
+        #success-title { /* Menggunakan ID */
             font-size: 50px;
             font-weight: 900;
             color: var(--dark);
@@ -52,7 +52,7 @@
             text-transform: uppercase;
         }
 
-        #success-message { /* Tambahkan ID untuk JavaScript */
+        #success-message { /* Menggunakan ID */
             font-size: 18px;
             line-height: 1.6;
             color: var(--dark);
@@ -96,31 +96,41 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="success-title">Pesan Terkirim!</h1>
+        <h1 id="success-title">TERIMA KASIH!</h1> 
         <p id="success-message">
-            Terima kasih! Pesan Anda telah berhasil dikirim ke dashboard Netlify dan akan segera ditinjau.
+            Pesan Anda telah berhasil dikirim ke dashboard Netlify. Husain akan segera meresponsnya.
         </p>
-        <a href="/" class="back-btn">Kembali ke Portfolio</a>
+        <a href="/" class="back-btn">KEMBALI KE PORTFOLIO</a>
     </div>
 
     <script>
+        // Fungsi untuk mendapatkan nilai dari query parameter di URL
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+            // Mengambil nilai parameter 'name'
+            return urlParams.get(param); 
         }
 
         const senderName = getQueryParam('name');
         
+        // Cek apakah nama ditemukan di URL
         if (senderName) {
-            const title = document.getElementById('success-title');
-            const message = document.getElementById('success-message');
+            const titleElement = document.getElementById('success-title');
+            const messageElement = document.getElementById('success-message');
             
-            // Mengubah Judul
-            title.textContent = 'TERIMA KASIH, ' + senderName.toUpperCase() + '!';
-
-            // Mengubah Pesan
-            message.textContent = 'Pesan Anda telah berhasil dikirim ke dashboard Netlify. Husain akan segera meresponsnya.';
+            // Mengubah Judul dengan nama pengirim
+            if (titleElement) {
+                // Hapus encoding '+' jika ada (terjadi pada spasi di beberapa browser)
+                const decodedName = senderName.replace(/\+/g, ' '); 
+                titleElement.textContent = `TERIMA KASIH, ${decodedName.toUpperCase()}!`;
+            }
+            
+            // Mengubah Pesan menjadi lebih personal
+            if (messageElement) {
+                messageElement.textContent = 'Pesan Anda telah berhasil dikirim ke dashboard Netlify. Husain akan segera meresponsnya.';
+            }
         }
+        // Jika nama tidak ditemukan, halaman akan menampilkan teks default ("TERIMA KASIH!")
     </script>
 </body>
 </html>

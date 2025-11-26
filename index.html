@@ -34,7 +34,7 @@
         .cursor {
             width: 20px;
             height: 20px;
-            border: 2px solid var(--primary);
+            background-color: var(--primary);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -44,16 +44,16 @@
         }
 
         .cursor-follower {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--secondary);
+            width: 70px;
+            height: 70px;
+            border: 12px solid var(--secondary);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9998;
             transition: all 0.3s ease;
             transform: translate(-50%, -50%);
-            opacity: 0.5;
+            opacity: 0.8;
         }
 
         /* Header */
@@ -863,7 +863,7 @@
             setTimeout(() => {
                 cursorFollower.style.left = e.clientX + 'px';
                 cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
+            }, 10);
         });
 
         // Header Hide/Show on Scroll
